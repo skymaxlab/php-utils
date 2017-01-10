@@ -10,14 +10,13 @@
         }
     ],
     "require": {
+        "laravel/framework": "5.3.*",
         "friendsofphp/php-cs-fixer": "^2.0",
         "yadakhov/curl": "^1.0",
         "yadakhov/insert-on-duplicate-key": "^0.0.9",
         "yadakhov/laradump": "^1.2",
         "ramsey/uuid": "^3.5",
-        "barryvdh/laravel-debugbar": "^2.3",
-        "illuminate/support": "^5.3",
-        "illuminate/database": "^5.3"
+        "barryvdh/laravel-debugbar": "^2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.0"
