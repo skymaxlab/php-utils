@@ -1,0 +1,34 @@
+{
+  "name": "skymaxlab/php-utils",
+  "description": "A collection of php utilities classes and functions.",
+  "homepage": "https://github.com/skymaxlab/php-utils",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yada Khov",
+      "email": "yada@skymaxlab.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "friendsofphp/php-cs-fixer": "^2.0",
+    "yadakhov/curl": "^1.0",
+    "yadakhov/insert-on-duplicate-key": "^0.0.9",
+    "yadakhov/laradump": "^1.2",
+    "ramsey/uuid": "^3.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SkyMaxLab\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "keywords": [
+    "helpers"
+  ]
+}
