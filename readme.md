@@ -9,6 +9,9 @@ A collection of php utilities classes and functions.
 ```php
     Barryvdh\Debugbar\ServiceProvider::class,
     Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+    Laracasts\Flash\FlashServiceProvider::class,
+    Laravel\Socialite\SocialiteServiceProvider::class,
+    Spatie\Fractal\FractalServiceProvider::class,
     Yadakhov\Laradump\LaradumpServiceProvider::class,
 ```
 
@@ -16,4 +19,12 @@ A collection of php utilities classes and functions.
 
 ```php
     'Debug' => Barryvdh\Debugbar\Facade::class,
+    'Fractal' => Spatie\Fractal\FractalFacade::class,
+    'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+```
+
+### Configs
+
+```
+    php artisan vendor:publish
 ```

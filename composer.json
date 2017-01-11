@@ -14,12 +14,19 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-debugbar": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.2",
+        "doctrine/dbal": "^2.5",
         "friendsofphp/php-cs-fixer": "^2.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "laracasts/flash": "^2.0",
+        "laravel/socialite": "^2.0",
+        "league/csv": "^8.1",
+        "predis/predis": "^1.1",
         "ramsey/uuid": "^3.5",
-        "yadakhov/curl": "^1.0",
-        "yadakhov/insert-on-duplicate-key": "^0.0.9",
-        "yadakhov/json": "v2.0.*",
-        "yadakhov/laradump": "^1.2"
+        "spatie/laravel-fractal": "^3.1",
+        "yadakhov/curl": "1.0.*",
+        "yadakhov/insert-on-duplicate-key": "1.0.*",
+        "yadakhov/json": "2.0.*",
+        "yadakhov/laradump": "1.2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.0"
