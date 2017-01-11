@@ -15,7 +15,7 @@ class HasEnumsTest extends \TestCase
             'COLOR_YELLOW' => 'yellow',
         ];
         $enums = HasEnumsClass::enums();
-        $this->assertEquals($expected, $enums);
+        $this->assertSame($expected, $enums);
     }
 
     public function testTypeEnums()
@@ -26,7 +26,7 @@ class HasEnumsTest extends \TestCase
             'TYPE_USER' => 'user',
         ];
         $enums = HasEnumsClass::enums('TYPE');
-        $this->assertEquals($expected, $enums);
+        $this->assertSame($expected, $enums);
 
         $expected = [
             'COLOR_RED' => 'red',
@@ -34,7 +34,7 @@ class HasEnumsTest extends \TestCase
             'COLOR_YELLOW' => 'yellow',
         ];
         $enums = HasEnumsClass::enums('COLOR');
-        $this->assertEquals($expected, $enums);
+        $this->assertSame($expected, $enums);
     }
 
     public function testIsValidEnumValue()

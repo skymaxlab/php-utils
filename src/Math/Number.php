@@ -12,6 +12,7 @@ class Number
 
     /**
      * Number constructor.
+     *
      * @param int $number
      * @param int $scale
      */
@@ -33,6 +34,7 @@ class Number
 
     /**
      * @param $number
+     *
      * @return $this
      */
     public function add($number)
@@ -44,6 +46,7 @@ class Number
 
     /**
      * @param $number
+     *
      * @return $this
      */
     public function subtract($number)
@@ -55,6 +58,7 @@ class Number
 
     /**
      * @param $number
+     *
      * @return $this
      */
     public function multiply($number)
@@ -66,6 +70,7 @@ class Number
 
     /**
      * @param $number
+     *
      * @return $this
      */
     public function divide($number)
@@ -105,6 +110,7 @@ class Number
      * @param $left
      * @param $right
      * @param int $scale
+     *
      * @return string
      */
     public static function bcadd($left, $right, $scale = Number::DEFAULT_SCALE)
@@ -116,6 +122,7 @@ class Number
      * @param $left
      * @param $right
      * @param int $scale
+     *
      * @return string
      */
     public static function bcsub($left, $right, $scale = Number::DEFAULT_SCALE)
@@ -127,6 +134,7 @@ class Number
      * @param $left
      * @param $right
      * @param int $scale
+     *
      * @return string
      */
     public static function bcmul($left, $right, $scale = Number::DEFAULT_SCALE)
@@ -138,6 +146,7 @@ class Number
      * @param $left
      * @param $right
      * @param int $scale
+     *
      * @return string
      */
     public static function bcdiv($left, $right, $scale = Number::DEFAULT_SCALE)

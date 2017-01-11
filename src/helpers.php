@@ -68,5 +68,3 @@ if (! function_exists('git_hash_short')) {
         return exec('git rev-parse --short HEAD');
     }
 }
-
-
