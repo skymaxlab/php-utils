@@ -19,6 +19,7 @@
         "guzzlehttp/guzzle": "^6.2",
         "laracasts/flash": "^2.0",
         "laravel/socialite": "^2.0",
+        "laravelcollective/html": "^5.3",
         "league/csv": "^8.1",
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.5",
