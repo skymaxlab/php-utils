@@ -3,6 +3,8 @@
 if (! function_exists('uuid')) {
     /**
      * Get a uuid version 4.
+     *
+     * @return string
      */
     function uuid()
     {
@@ -12,7 +14,10 @@ if (! function_exists('uuid')) {
 
 if (! function_exists('php_fixer_rules')) {
     /**
-     * Get a uuid version 4.
+     * Get rules for php-cs-fixer.
+     * Curated list of the rules we like.
+     *
+     * @return array
      */
     function php_fixer_rules()
     {
@@ -39,3 +44,29 @@ if (! function_exists('php_fixer_rules')) {
         ];
     }
 }
+
+if (! function_exists('git_hash')) {
+    /**
+     * Get the git hash from the git repo.
+     *
+     * @return string
+     */
+    function git_hash()
+    {
+        return exec('git rev-parse HEAD');
+    }
+}
+
+if (! function_exists('git_hash_short')) {
+    /**
+     * Get git hash short version.
+     *
+     * @return string
+     */
+    function git_hash_short()
+    {
+        return exec('git rev-parse --short HEAD');
+    }
+}
+
+
