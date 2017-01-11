@@ -3,6 +3,7 @@
 namespace SkyMaxLab\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use SkyMaxLab\Traits\HasEnums;
 use Yadakhov\InsertOnDuplicateKey;
 
 /**
@@ -11,6 +12,7 @@ use Yadakhov\InsertOnDuplicateKey;
 class BaseModel extends Model
 {
     use InsertOnDuplicateKey;
+    use HasEnums;
 
     /**
      * Get an instance of the model.
