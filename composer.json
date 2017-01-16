@@ -27,8 +27,7 @@
         "yadakhov/curl": "1.0.*",
         "yadakhov/insert-on-duplicate-key": "1.0.*",
         "yadakhov/json": "2.0.*",
-        "yadakhov/laradump": "1.2.*",
-        "yadakhov/sportsodd": "^1.0"
+        "yadakhov/laradump": "1.2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.0"
