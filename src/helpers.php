@@ -68,3 +68,19 @@ if (! function_exists('git_hash_short')) {
         return exec('git rev-parse --short HEAD');
     }
 }
+
+if (! function_exists('var_export_short')) {
+    /**
+     * var_export for short array syntax.
+     *
+     * @return string
+     */
+    function var_export_short($expression)
+    {
+        $temp = var_export($expression, true);
+        $temp = str_replace('array (', '[', $temp);
+        $temp = str_replace(')', ']', $temp);
+
+        return $temp;
+    }
+}
