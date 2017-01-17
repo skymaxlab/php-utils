@@ -31,3 +31,17 @@ A collection of php utilities classes and functions.
 ```
     php artisan vendor:publish
 ```
+
+### Register Commands 
+
+```php
+// app/Console/Console/Kernel.php
+class Kernel extends ConsoleKernel
+{
+    protected $commands = [
+        ...
+        // php-utils
+        \SkyMaxLab\Console\Commands\App\ModelColumns::class,
+    ];
+}
+```
