@@ -73,6 +73,8 @@ if (! function_exists('var_export_short')) {
     /**
      * var_export for short array syntax.
      *
+     * @param mixed $expression
+     *
      * @return string
      */
     function var_export_short($expression)

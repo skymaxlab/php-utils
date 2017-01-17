@@ -2,9 +2,9 @@
 
 namespace SkyMaxLab\Console\Commands\App;
 
-use Illuminate\Console\Command;
 use DB;
 use Format;
+use Illuminate\Console\Command;
 
 class ModelColumns extends Command
 {
@@ -37,30 +37,24 @@ class ModelColumns extends Command
             $table = $this->getTableName($content);
 
             if (empty($table)) {
-                $this->warn(sprintf('protected $table not defined in %s', $file));
+                $this->info(sprintf('protected $table not defined in %s', $file));
                 continue;
             }
 
-            if (strpos($content, $this->getStartColumnsTag()) === false) {
-                $this->warn(sprintf('Cannot find %s tag for %s', $this->getStartColumnsTag(), $file));
+            if (strpos($content, 'public $columns') === false) {
+                $this->info(sprintf('public $columns not set for %s', $file));
                 continue;
             }
 
-            if (strpos($content, $this->getStartColumnsTag()) === false) {
-                $this->warn(sprintf('Cannot find %s tag for %s', $this->getEndColumnsTag(), $file));
-                continue;
-            }
+            $columns = $this::getAllColumns($table);
 
-            $columns = BaseModel::getAllColumns($table);
+            $columnMeta = 'public $columns = ' . trim($this->shortArrayFormat($columns, '        ')) . ';';
 
-            $columnMeta = "\n" . '    protected $columns = ' . trim(Format::shortArrayFormat($columns, '        ')) . ";\n    ";
-
-            $startPosition = strpos($content, $this->getStartColumnsTag());
-            $startPosition += strlen($this->getStartColumnsTag());
-            $endPosition = strpos($content, $this->getEndColumnsTag());
+            $startPosition = strpos($content, 'public $columns');
+            $endPosition = strpos($content, ';', $startPosition);
 
             // remove what's currently there
-            $content = substr_replace($content, $columnMeta, $startPosition, $endPosition - $startPosition);
+            $content = substr_replace($content, $columnMeta, $startPosition, $endPosition - $startPosition + 1);
 
             // rewrite the file
             file_put_contents($file, $content);
@@ -93,23 +87,25 @@ class ModelColumns extends Command
     }
 
     /**
-     * Get the start column token.
+     * Get all the columns of a table.  Lookup information_schema.
      *
-     * @return string
+     * @param $table
+     *
+     * @return array
      */
-    public function getStartColumnsTag()
+    public function getAllColumns($table)
     {
-        return '// {Columns}';
-    }
+        $sql = 'SELECT column_name FROM information_schema.columns WHERE table_name = ? ORDER BY ordinal_position';
 
-    /**
-     * Get the end column token.
-     *
-     * @return string
-     */
-    public function getEndColumnsTag()
-    {
-        return '// {/Columns}';
+        $columns = [];
+
+        $rows = DB::select($sql, [$table]);
+
+        foreach ($rows as $row) {
+            $columns[] = $row->column_name;
+        }
+
+        return $columns;
     }
 
     /**
@@ -155,5 +151,29 @@ class ModelColumns extends Command
         }
 
         return $out;
+    }
+
+    /**
+     * Convert an array to short array format.  Does not support multidimensional array.
+     *
+     * @param $columns
+     * @param string $indent
+     *
+     * @return string
+     */
+    public function shortArrayFormat($columns, $indent = '    ')
+    {
+        $out = '[' . PHP_EOL;
+
+        foreach ($columns as $column) {
+            $out .= "{$indent}'{$column}'," . PHP_EOL;
+        }
+
+        $bottomIndent = '';
+        if (strlen($indent) > 4) {
+            $bottomIndent = substr($indent, 4);
+        }
+
+        return $out . $bottomIndent . ']' . PHP_EOL;
     }
 }
