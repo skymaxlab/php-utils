@@ -95,14 +95,17 @@ class ModelColumns extends Command
      */
     public function getAllColumns($table)
     {
-        $sql = 'SELECT column_name FROM information_schema.columns WHERE table_name = ? ORDER BY ordinal_position';
+        $connection = config('database.default');
+        $database = config('database.connections.'.$connection.'.database');
+
+        $sql = 'SELECT COLUMN_NAME FROM information_schema.columns a WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ? ORDER BY ORDINAL_POSITION;';
 
         $columns = [];
 
-        $rows = DB::select($sql, [$table]);
+        $rows = DB::select($sql, [$database, $table]);
 
         foreach ($rows as $row) {
-            $columns[] = $row->column_name;
+            $columns[] = $row->COLUMN_NAME;
         }
 
         return $columns;
