@@ -14,6 +14,8 @@ class BaseModel extends Model
     use InsertOnDuplicateKey;
     use HasEnums;
 
+    protected $guarded = [];
+
     /**
      * Get an instance of the model.
      *
