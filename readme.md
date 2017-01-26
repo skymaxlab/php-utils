@@ -19,6 +19,7 @@ A collection of php utilities classes and functions.
 ### Alias
 
 ```php
+    'Carbon' => Carbon\Carbon::class,
     'Debug' => Barryvdh\Debugbar\Facade::class,
     'Form' => Collective\Html\FormFacade::class,
     'Fractal' => Spatie\Fractal\FractalFacade::class,
