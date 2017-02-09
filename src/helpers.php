@@ -35,7 +35,6 @@ if (! function_exists('php_fixer_rules')) {
             'psr4' => true,
             'strict_param' => true,
             'php_unit_strict' => true,
-            'align_double_arrow' => false,
             'phpdoc_add_missing_param_annotation' => true,
             'no_extra_consecutive_blank_lines' => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
             'binary_operator_spaces' => ['align_double_arrow' => false, 'align_equals' => false],
