@@ -85,3 +85,63 @@ if (! function_exists('var_export_short')) {
         return $temp;
     }
 }
+
+if (!function_exists('transform')) {
+    /**
+     * Transform.
+     *
+     * @param $data
+     * @param $transformer
+     * @param null $resourceKey
+     *
+     * @return array
+     */
+    function transform($data, $transformer, $resourceKey = null)
+    {
+        if ($data instanceof \Illuminate\Database\Eloquent\Collection) {
+            return collection($data, $transformer, $resourceKey);
+        }
+
+        return item($data, $transformer, $resourceKey);
+    }
+}
+
+if (!function_exists('item')) {
+    /**
+     * Return a fractal item response.
+     *
+     * @param $data
+     * @param $transformer
+     * @param null $resourceKey
+     *
+     * @return array
+     */
+    function item($data, $transformer, $resourceKey = null)
+    {
+        $manager = new League\Fractal\Manager();
+        $manager->setSerializer(new \SkyMaxLab\Fractal\ResourceKeySerializer());
+        $item = new League\Fractal\Resource\Item($data, new $transformer(), $resourceKey);
+
+        return $manager->createData($item)->toArray();
+    }
+}
+
+if (!function_exists('collection')) {
+    /**
+     * Return a fractal collection response.
+     *
+     * @param $data
+     * @param $transformer
+     * @param null $resourceKey
+     *
+     * @return array
+     */
+    function collection($data, $transformer, $resourceKey = null)
+    {
+        $manager = new League\Fractal\Manager();
+        $manager->setSerializer(new \SkyMaxLab\Fractal\ResourceKeySerializer());
+        $collection = new League\Fractal\Resource\Collection($data, new $transformer(), $resourceKey);
+
+        return $manager->createData($collection)->toArray();
+    }
+}
