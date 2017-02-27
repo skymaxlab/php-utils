@@ -145,3 +145,25 @@ if (!function_exists('collection')) {
         return $manager->createData($collection)->toArray();
     }
 }
+
+if (!function_exists('substring_tags')) {
+    /**
+     * Substring within first and second tags.
+     *
+     * @param $string
+     * @param $firstTag
+     * @param $sendTag
+     *
+     * @return string
+     */
+    function substring_tags($string, $firstTag, $sendTag)
+    {
+        $pos = strpos($string, $firstTag);
+        $string = substr($string, $pos);
+
+        $pos = strpos($string, $sendTag);
+        $string = substr($string, 0, $pos + strlen($sendTag));
+
+        return $string;
+    }
+}
