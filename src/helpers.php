@@ -167,3 +167,45 @@ if (!function_exists('substring_tags')) {
         return $string;
     }
 }
+
+if (!function_exists('html_table_to_array')) {
+    /**
+     *
+     *
+     * @param $html
+     *
+     * @return array
+     */
+    function html_table_to_array($html)
+    {
+        // treat th as same as td
+        $html = str_replace('<th>', '<td>', $html);
+        $html = str_replace('</th>', '</td>', $html);
+
+        $dom = new \DOMDocument();
+        @$dom->loadHTML($html);
+        $dom->preserveWhiteSpace = false;
+        $tables = $dom->getElementsByTagName('table');
+
+        $tableData = [];
+        foreach ($tables as $table) {
+            $rows = $table->getElementsByTagName('tr');
+            foreach ($rows as $row) {
+                $tds = $row->getElementsByTagName('td');
+
+                $new = [];
+                foreach ($tds as $td) {
+                    $innerHTML = '';
+                    $children = $td->childNodes;
+                    foreach ($children as $child) {
+                        $innerHTML .= $child->ownerDocument->saveXML($child);
+                    }
+                    $new[] = $innerHTML;
+                }
+                $tableData[] = $new;
+            }
+        }
+
+        return $tableData;
+    }
+}
