@@ -1,5 +1,27 @@
 # php-utils
 
+## Insllation.
+
+Add the following to your composer.json file.
+
+```
+    "require": {
+        ... other stuff
+        "skymaxlab/php-utils": "dev-master",
+        ... other stuff
+     }
+     
+     ...   
+     
+    "repositories": [
+        {
+            "url": "https://github.com/skymaxlab/php-utils.git",
+            "type": "git"
+        }
+    ],
+   
+```
+
 A collection of php utilities classes and functions.
 
 ## load typical packages for all projects
