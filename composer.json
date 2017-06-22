@@ -41,6 +41,7 @@
             "src/helpers.php"
         ]
     },
+    "bin": ["ide_helper", "php_cs_fixer"],
     "keywords": [
         "helpers"
     ]
