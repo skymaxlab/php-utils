@@ -1,6 +1,6 @@
 # php-utils
 
-## Insllation.
+## Installlation.
 
 Add the following to your composer.json file.
 
